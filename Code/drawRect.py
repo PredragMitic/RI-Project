@@ -26,3 +26,21 @@ drawRectangles(
     [200, 0, 300, 300, 1], 
     [500, 200, 300, 500, 1]], 
     1300, 1000)
+
+
+def generateRectangles(minDim, maxDim, n, maxArea):
+  area = 0
+  rectangles = []
+
+  for i in range(n):
+    w = random.randint(minDim, maxDim)
+    h = random.randint(minDim, maxDim)
+    area = area + w * h
+    if area >= maxArea:
+      break
+    rectangles.append([w, h])
+
+  print(area)
+  return rectangles
+
+print(generateRectangles(200, 600, 10, 1300000))
