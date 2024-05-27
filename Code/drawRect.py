@@ -43,4 +43,31 @@ def generateRectangles(minDim, maxDim, n, maxArea):
   print(area)
   return rectangles
 
-print(generateRectangles(200, 600, 10, 1300000))
+rectangles = generateRectangles(200, 600, 10, 1300000)
+
+def find_next_permutation(sequence):
+    k = len(sequence) - 2
+    while k >= 0 and sequence[k] >= sequence[k + 1]:
+        k -= 1
+
+    if k == -1:
+        return False
+
+    l = len(sequence) - 1
+    while sequence[l] <= sequence[k]:
+        l -= 1
+
+    sequence[k], sequence[l] = sequence[l], sequence[k]
+    sequence[k + 1:] = reversed(sequence[k + 1:])
+    return True
+
+def generate_all_permutations(sequence):
+    permutations_list = [sequence[:]]
+
+    while find_next_permutation(sequence):
+        permutations_list.append(sequence[:])
+
+    return permutations_list
+
+perm = generate_all_permutations(rectangles)
+print(len(perm))
