@@ -2,7 +2,6 @@ import random
 from copy import deepcopy
 from util import drawImages, arrange_images, imagesArea
 from ibl import IBL
-import statistics
 
 class Individual:
     def __init__(self, images, width, height):
@@ -23,8 +22,6 @@ class Individual:
         ibl = IBL(self.width, self.height)
         ibl.place_images(arrange_images(self.images, self.code[:self.n], self.code[self.n:]))
         w, h = ibl.get_bounds()
-        # print((w, h))
-        # drawImages(placed_images, self.width, self.height, w, h)
         return self.imgArea / (w*h)
 
     def update_fitness(self):

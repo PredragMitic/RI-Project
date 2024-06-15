@@ -1,6 +1,3 @@
-from util import drawImages
-from util import Image
-
 class IBL:
     def __init__(self, container_width, container_height):
         self.container_width = container_width
@@ -53,7 +50,6 @@ class IBL:
             barrier_top = barrier.y + barrier.height
             if image.y < barrier_top:
                 # print('Nema vise prostora')
-                drawImages(self.placed_images, self.container_width, self.container_height, 0, 0)
                 return -1
 
             image.y = barrier_top

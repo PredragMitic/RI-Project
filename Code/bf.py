@@ -1,7 +1,7 @@
 import copy
 
 from ibl import IBL
-from util import Image, arrange_images, drawImages, imagesArea
+from util import arrange_images, drawImages, imagesArea
 
 
 class BruteForce:
