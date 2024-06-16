@@ -1,17 +1,25 @@
 from ga import GeneticAlgorithm
 from bf import BruteForce
 from util import Image, generateImages
+import time
 
-images1 = [Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20),
-           Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20),
-           Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20)]
-atlas_width = 200
-atlas_height = 300
+start = time.time()
 
-# bf = BruteForce(images, atlas_width, atlas_height)
-# bf.run()
+images1 = [Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20)]
+images2 = [Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20), Image(60, 50), Image(50, 70)]
 
-images2 = generateImages(10, 200, 30, 1000000)
+
+atlas_width = 300
+atlas_height = 240
+
+#bf = BruteForce(images1, atlas_width, atlas_height)
+#bf.run()
+
+#images2 = generateImages(10, 200, 30, 1000000)
+
+images2 = [Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20), Image(40, 50),
+            Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20), Image(50, 30),
+            Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20)]
 
 # Parameters
 pop_size = 75  # 80
@@ -21,6 +29,9 @@ tour_size = 40
 elitism_size = 20
 
 # Run genetic algorithm
-ga = GeneticAlgorithm(images1, atlas_width, atlas_height, pop_size,
-                      num_generations, tour_size, elitism_size, mutation_prob)
+ga = GeneticAlgorithm(images2, atlas_width, atlas_height, pop_size, num_generations, tour_size, elitism_size, mutation_prob)
 ga.run()
+
+
+end = time.time()
+print(end - start)
