@@ -27,7 +27,7 @@ def drawExample(maxX, maxY):
     plt.show()
 
 
-drawExample(400, 300)
+#drawExample(400, 300)
 
 class Image:
     def __init__(self, width, height):

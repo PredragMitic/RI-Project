@@ -1,3 +1,5 @@
+# from util import Image, drawImages
+
 class IBL:
     def __init__(self, container_width, container_height):
         self.container_width = container_width
@@ -11,13 +13,14 @@ class IBL:
         for placed in self.placed_images:
             pl = placed.x
             pr = placed.x + placed.width
+            pt = placed.y + placed.height
             il = image.x
             ir = image.x + image.width
 
             if pl < il and pr > il  or pl >= il and pl < ir:
-               if not barrier or placed.y > max_y: 
+               if not barrier or pt > max_y: 
                     barrier = placed
-                    max_y = barrier.y
+                    max_y = pt
                     
         return barrier
     
@@ -31,13 +34,14 @@ class IBL:
 
             pb = placed.y
             pt = placed.y + placed.height
+            pr = placed.x + placed.width
             ib = image.y
             it = image.y + image.height
 
             if pb < ib and pt > ib  or pb >= ib and pb < it:
-               if not barrier or placed.x > max_x: 
+               if not barrier or pr > max_x: 
                     barrier = placed
-                    max_x = barrier.x
+                    max_x = pr
                     
         return barrier
 
@@ -67,7 +71,7 @@ class IBL:
         if barrier :
             barrier_right = barrier.x + barrier.width
             if image.x < barrier_right:
-                # print('Nema vise prostora')
+                #print('Nema vise prostora')
                 return -1
             image.x = max(barrier_right, x1)
         else:
@@ -96,7 +100,7 @@ class IBL:
             x1 = new_width - image.width
             ind = self.shift_to_left(image, x1)
             if new_width == -1 or ind  == -1: 
-                return False
+                break
             
 
         return True
@@ -126,15 +130,18 @@ class IBL:
                 return []
             self.placed_images.append(image)
             self.update_bounds(image)
+            # drawImages(self.placed_images, 300, 200, 300, 200)
 
         return self.placed_images
 
 
-# images = [Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20)]
-# ibl = IBL(150, 300)
+# images = [Image(101, 41), Image(41, 101), Image(21, 31), Image(41, 41), Image(31, 41), Image(21, 21),
+#           Image(102, 42), Image(42, 102), Image(22, 32), Image(42, 42), Image(32, 42), Image(22, 22),
+#           Image(101, 41), Image(41, 101), Image(21, 31), Image(41, 41), Image(31, 41), Image(21, 21)]
+# ibl = IBL(300, 200)
 
 # placed = ibl.place_images(images)
 
 # bx, by = ibl.get_bounds()
 
-# drawImages(placed, 200, 150, bx, by)
+# drawImages(placed, 300, 200, bx, by)

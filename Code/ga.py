@@ -101,7 +101,6 @@ class GeneticAlgorithm:
             for ind in self.population:
                 ind.update_fitness()
 
-        # Get the best chromosome
         best = max(self.population, key=lambda x: x.fitness)
         
         print(best.fitness)

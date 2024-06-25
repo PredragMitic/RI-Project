@@ -55,8 +55,6 @@ class BruteForce:
         permutations = self.generate_all_permutations(list(range(self.n)))
         orijentations = self.generate_all_orijentations(self.n)
 
-
-
         w_best = float('inf')
         h_best = float('inf')
         best_placed = []

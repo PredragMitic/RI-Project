@@ -17,19 +17,18 @@ atlas_height = 240
 
 #images2 = generateImages(10, 200, 30, 1000000)
 
-images2 = [Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20), Image(40, 50),
+images3 = [Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20), Image(40, 50),
             Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20), Image(50, 30),
             Image(100, 40), Image(40, 100), Image(20, 30), Image(40, 40), Image(30, 40), Image(20, 20)]
 
-# Parameters
-pop_size = 75  # 80
-num_generations = 150  # 100
-mutation_prob = 0.1
-tour_size = 40
-elitism_size = 20
+# Parametri
+pop_size = 100
+num_generations = 150
+mutation_prob = 0.05
+tour_size = 25
+elitism_size = 15
 
-# Run genetic algorithm
-ga = GeneticAlgorithm(images2, atlas_width, atlas_height, pop_size, num_generations, tour_size, elitism_size, mutation_prob)
+ga = GeneticAlgorithm(images3, atlas_width, atlas_height, pop_size, num_generations, tour_size, elitism_size, mutation_prob)
 ga.run()
 
 
